@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portfolio Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #733b12;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --text-light: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            transition: var(--transition);
+        }
+
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: 2rem;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--text-light);
+            color: var(--text-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lang-btn.active {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .lang-btn:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            text-align: center;
+            padding: 10rem 0 5rem;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .about {
+            background-color: #fff;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+
+        .skills {
+            background-color: #f8f9fa;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+
+        .projects {
+            background-color: #fff;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tag {
+            background-color: var(--light-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+
+        .contact {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .contact h2::after {
+            background-color: var(--accent-color);
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .contact-info, .contact-form {
+            flex: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+
+        footer {
+            background-color: var(--dark-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .about-content, .contact-content {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .language-switcher {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            
+            .hero {
+                padding: 8rem 0 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 3rem 0;
+            }
+            
+            .hero {
+                padding: 7rem 0 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">MYPortfolio</div>
+                <ul class="nav-links">
+                    <li><a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a></li>
+                    <li><a href="#sobre-mi" data-es="Sobre Mí" data-en="About">Sobre Mí</a></li>
+                    <li><a href="#habilidades" data-es="Habilidades" data-en="Skills">Habilidades</a></li>
+                    <li><a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+                    <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="es">ES</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1 data-es="Hola, soy Fabian Camilo Pertuz Torres" data-en="Hi, I'm Fabian Camilo Pertuz Torres">Hola, soy [Tu Nombre]</h1>
+            <p data-es="Desarrollador de soluciones innovadoras y experiencias de usuario excepcionales. Aquí encontrarás una muestra de mis proyectos y habilidades." 
+               data-en="Developer creating innovative solutions and exceptional user experiences. Here you'll find a showcase of my projects and skills.">
+                Desarrollador Full Stack apasionado por crear soluciones innovadoras y experiencias de usuario excepcionales. Aquí encontrarás una muestra de mis proyectos y habilidades.
+            </p>
+            <a href="#proyectos" class="btn" data-es="Ver Mis Proyectos" data-en="View My Projects">Ver Mis Proyectos</a>
+        </div>
+    </section>
+
+    <section id="sobre-mi" class="about">
+        <div class="container">
+            <h2 data-es="Sobre Mí" data-en="About Me">Sobre Mí</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-es="Soy Fabian Camilo Pertuz Torres, técnico en desarrollo de software graduado del programa intensivo en Campuslands, donde pasé 10 meses especializándome en tecnologías como Node.js, JavaScript, Python para desarrollo backend y MongoDB para gestión de bases de datos." 
+                       data-en="I'm Fabian Camilo Pertuz Torres, a software development technician graduated from the intensive program at Campuslands, where I spent 10 months specializing in technologies like Node.js, JavaScript, Python for backend development, and MongoDB for database management.">
+                        Soy un desarrollador full stack con experiencia en la creación de aplicaciones web modernas y responsivas. Durante mi entrenamiento, he trabajado con diversas tecnologías y frameworks para desarrollar soluciones completas.
+                    </p>
+                    <p data-es="me he dedicado a dominar herramientas y metodologías que me permiten construir aplicaciones escalables, gestionar bases de datos eficientemente y resolver problemas técnicos con un enfoque práctico y orientado a resultados." 
+                       data-en="I've dedicated my training to mastering tools and methodologies that allow me to build scalable applications, manage databases efficiently, and solve technical problems with a practical, results-oriented approach">
+                        Me apasiona el desarrollo frontend, creando interfaces atractivas y funcionales, pero también disfruto del desafío del backend, construyendo APIs robustas y bases de datos eficientes.
+                    </p>
+                    <p data-es="Mi enfoque está en desarrollar soluciones tecnológicas que aborden necesidades del mundo real, particularmente aquellas que enfrentan las empresas hoy en día. Me motiva la idea de crear aplicaciones que no solo cumplan con los requisitos funcionales, sino que también mejoren las experiencias de las personas y optimicen procesos.  " 
+                       data-en="My focus is on developing technological solutions that address real-world needs, particularly those faced by companies today. I'm motivated by the idea of creating applications that not only meet functional requirements but also improve people's experiences and optimize processes.">
+                        Estoy constantemente aprendiendo nuevas tecnologías y mejorando mis habilidades para mantenerme actualizado en este campo en constante evolución.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="images/profile.jpg" alt="Foto  de perfil" class="profile-photo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="habilidades" class="skills">
+        <div class="container">
+            <h2 data-es="Mis Habilidades" data-en="My Skills">Mis Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3 data-es="Frontend" data-en="Frontend">Frontend</h3>
+                    <p data-es="HTML5, CSS3, JavaScript,  Bootstrap" 
+                       data-en="HTML5, CSS3, JavaScript,  Bootstrap">
+                        HTML5, CSS3, JavaScript, Bootstrap
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 data-es="Backend" data-en="Backend">Backend</h3>
+                    <p data-es="Node.js, Express, Python, Bases de datos SQL y NoSQL" 
+                       data-en="Node.js, Express, Python,  SQL and NoSQL databases">
+                        Node.js, Express, Python, Bases de datos SQL y NoSQL
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 data-es="Diseño Responsive" data-en="Responsive Design">Diseño Responsive</h3>
+                    <p data-es="Diseño adaptable para todos los dispositivos, Mobile First, Progressive Web Apps" 
+                       data-en="Adaptable design for all devices, Mobile First, Progressive Web Apps">
+                        Diseño adaptable para todos los dispositivos, Mobile First, Progressive Web Apps
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 data-es="Herramientas" data-en="Tools">Herramientas</h3>
+                    <p data-es="Git, GitHub,  npm, APIs REST, " 
+                       data-en="Git, GitHub, npm, REST APIs, ">
+                        Git, GitHub, npm, APIs REST, 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="proyectos" class="projects">
+        <div class="container">
+            <h2 data-es="Mis Proyectos" data-en="My Projects">Mis Proyectos</h2>
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/culinariresep.jpg" alt="Proyecto 1">
+                    </div>
+                    <div class="project-info">
+                        <h3 data-es="Culinaryrecepi" data-en="Culinaryrecepi">Culinaryrecepi</h3>
+                        <p data-es="Una API RESTful para gestión de recetas culinarias, desarrollada con Node.js, Express y MongoDB." 
+                           data-en="A RESTful API for culinary recipe management, developed with Node.js, Express, and MongoDB.">
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Express.js</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">Insomnia</span>
+                        </div>
+                        <a href="#" class="btn" data-es="Ver Detalles" data-en="View Details">Ver Detalles</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/gym.jpg" alt="Proyecto 2">
+                    </div>
+                    <div class="project-info">
+                        <h3 data-es="GestionGym" data-en="GestionGym">App de Gestión de Tareas</h3>
+                        <p data-es="Sistema de gestión para gimnasios desarrollado en Node.js con un enfoque modular, aplicando principios SOLID, patrones de diseño y buenas prácticas." 
+                           data-en="Gym management system developed in Node.js with a modular approach, applying SOLID principles, design patterns and best practices.">
+                            
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Librerías clave: inquirer, chalk, mongodb</span>
+                        </div>
+                        <a href="#" class="btn" data-es="Ver Detalles" data-en="View Details">Ver Detalles</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/pizza.jpg" alt="Proyecto 3">
+                    </div>
+                    <div class="project-info">
+                        <h3 data-es="Pizza y Punto" data-en="Pizza y Punto">Pizza y Punto</h3>
+                        <p data-es="Sistema de gestión para cadena de pizzerías construido con Node.js y MongoDB." 
+                           data-en="Pizza chain management system built with Node.js and MongoDB.">
+                            Pizza chain management system built with Node.js and MongoDB.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Express</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">AWS S3</span>
+                        </div>
+                        <a href="#" class="btn" data-es="Ver Detalles" data-en="View Details">Ver Detalles</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/store.jpg" alt="Proyecto 4">
+                    </div>
+                    <div class="project-info">
+                        <h3 data-es="Dashboard Analytics" data-en="Analytics Dashboard">Dashboard Analytics</h3>
+                        <p data-es="¡Proyecto CLI de Administrador de Tareas! Este es un sistema interactivo de gestión de tareas basado en consola donde puedes crear, completar y administrar tus tareas eficientemente." 
+                           data-en="Task Manager CLI project! This is an interactive console-based task management system where you can create, complete, and manage your tasks efficiently.">
+                            Task Manager CLI project! This is an interactive console-based task management system where you can create, complete, and manage your tasks efficiently.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Inquirer.js </span>
+                            <span class="tag">Chart.js</span>
+                            <span class="tag">NanoID</span>
+                        </div>
+                        <a href="#" class="btn" data-es="Ver Detalles" data-en="View Details">Ver Detalles</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2 data-es="Contacto" data-en="Contact">Contacto</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p data-es="¿Tienes un proyecto en mente? ¡Me encantaría escucharte! Ponte en contacto conmigo y hablemos sobre cómo puedo ayudarte." 
+                       data-en="Do you have a project in mind? I'd love to hear from you! Get in touch and let's talk about how I can help you.">
+                        ¿Tienes un proyecto en mente? ¡Me encantaría escucharte! Ponte en contacto conmigo y hablemos sobre cómo puedo ayudarte.
+                    </p>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>fpertuz@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3 data-es="Teléfono" data-en="Phone">Teléfono</h3>
+                            <p>+300 2369732</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3 data-es="Ubicación" data-en="Location">Ubicación</h3>
+                            <p data-es="Bucaramaga , Colombia" data-en="Bucaramanga, Colombia">Ciudad, País</p>
+                        </div>
+                    </div>
+                </div>
+ 
+
+    <script>
+
+        const languageButtons = document.querySelectorAll('.lang-btn');
+        let currentLanguage = 'es';
+
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+
+            languageButtons.forEach(btn => {
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            document.querySelectorAll('[data-es]').forEach(element => {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    const placeholderAttr = `data-${lang}-placeholder`;
+                    if (element.hasAttribute(placeholderAttr)) {
+                        element.placeholder = element.getAttribute(placeholderAttr);
+                    }
+                } else {
+                    element.textContent = element.getAttribute(`data-${lang}`);
+                }
+            });
+
+            document.title = lang === 'es' ? 'Mi Portfolio Profesional' : 'My Professional Portfolio';
+            
+
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        languageButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                changeLanguage(button.dataset.lang);
+            });
+        });
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('preferredLanguage');
+            const browserLanguage = navigator.language.split('-')[0];
+            
+            if (savedLanguage) {
+                changeLanguage(savedLanguage);
+            } else if (browserLanguage === 'es' || browserLanguage === 'en') {
+                changeLanguage(browserLanguage);
+            }
+        });
+
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const message = currentLanguage === 'es' 
+                ? '¡Gracias por tu mensaje! Te responderé pronto.' 
+                : 'Thank you for your message! I will get back to you soon.';
+            alert(message);
+            this.reset();
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
