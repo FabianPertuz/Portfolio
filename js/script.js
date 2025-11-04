@@ -1,4 +1,4 @@
-// Menú hamburguesa para móviles
+
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
@@ -6,32 +6,28 @@ hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
-// Cerrar menú al hacer clic en un enlace
+
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
     });
 });
 
-// Formulario de contacto
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    // Obtener datos del formulario
+
     const formData = new FormData(this);
     const name = formData.get('name');
     const email = formData.get('email');
     const subject = formData.get('subject');
     const message = formData.get('message');
     
-    // Aquí puedes agregar la lógica para enviar el formulario
-    // Por ejemplo, usando EmailJS, Fetch API, etc.
+
     
     alert('¡Gracias por tu mensaje! Te responderé pronto.');
     this.reset();
 });
 
-// Efecto de scroll suave para navegación
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -49,7 +45,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Efecto de aparición al hacer scroll
+
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -64,7 +60,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Aplicar efecto a las secciones
 document.querySelectorAll('section').forEach(section => {
     section.style.opacity = '0';
     section.style.transform = 'translateY(20px)';
@@ -72,7 +67,7 @@ document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
 
-// Cambiar estilo del header al hacer scroll
+
 window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
     if (window.scrollY > 100) {
@@ -84,7 +79,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Contador de estadísticas (opcional)
+
 function initStatsCounter() {
     const stats = document.querySelectorAll('.stat-number');
     if (stats.length > 0) {
@@ -106,7 +101,6 @@ function initStatsCounter() {
     }
 }
 
-// Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
     initStatsCounter();
 });
